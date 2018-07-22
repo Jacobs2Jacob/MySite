@@ -1,5 +1,7 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+﻿<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500" 
+     style="background-color:#c80a48 !important">
     <div class="container">
+
         <div class="navbar-translate">
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
@@ -7,40 +9,35 @@
                 <span class="navbar-toggler-bar"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                        <p class="d-lg-none">Twitter</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-                        <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none">Facebook</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/pk2-angular" target="_blank">
-                        <i class="fa fa-github"></i>
-                        <p class="d-lg-none">GitHub</p>
-                    </a>
-                </li>
-                <!-- <li class="nav-item" *ngIf="isHome()">
-                    <a href="https://www.creative-tim.com/product/paper-kit-2-pro?ref=pk2-free-local" target="_blank" class="btn btn-danger btn-round disabled">Upgrade to Pro</a>
-                </li> -->
-                <li class="nav-item" *ngIf="!isHome()">
-                    <a [routerLink]="['/home']" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
-                    <a [routerLink]="['/home']" class="nav-link">Back to Kit</a>
-                </li>
-            </ul>
+
+        <div class="row" style="color:white;width:100%;display:inline-flex;height:34px">
+            <!--Logo-->
+            <a [routerLink]="['/home']" class="link col-1"
+               style="font-size:20px">QuickNet</a>
+            
+            <!--Middle links-->
+            <div class="collapse navbar-collapse col-8" id="navbarToggler">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="link" [routerLink]="['/user-profile']">
+                            אודותינו
+                        </a>
+                    </li>
+                    <li style="margin-left:15px" class="nav-item">
+                        <a class="link" [routerLink]="['/contact']">
+                            צור קשר
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--Right links-->
+            <div class="col-3">
+                <a style="float:right" rel="tooltip" title="My Linkedin Page"
+                   data-placement="bottom" href="https://www.linkedin.com/in/yaniv-jacob-b8367574/" target="_blank">
+                    <i class="fa fa-linkedin-square fa-2x" style="color:white;top:unset !important"></i>
+                    <p class="d-lg-none">Facebook</p>
+                </a>
+            </div>
         </div>
     </div>
 </nav>

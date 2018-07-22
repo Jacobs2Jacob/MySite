@@ -5,8 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 
-import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
+import { AppComponent } from './app.component'; 
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
@@ -15,15 +14,16 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { HomeModule } from './home/home.module';
 import { SamplesModule } from './samples/samples.module';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SignupComponent,
+    AppComponent, 
     LandingComponent,
     ProfileComponent,
     NavbarComponent,
-    FooterComponent
+      FooterComponent,
+      ContactComponent
   ],
   imports: [
     BrowserModule,

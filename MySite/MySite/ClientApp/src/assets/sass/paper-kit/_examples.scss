@@ -1,7 +1,7 @@
 .landing-alert{
     margin-bottom: 0;
 }
-.page-header{
+.page-header {
     background-color: #B2AFAB;
     background-position: center center;
     background-size: cover;
@@ -14,15 +14,9 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    /* Center vertically */
-    align-items: center;
-    /*Center horizontaly */
     justify-content: center;
 
-    /*Center horizontaly ie */
-    -ms-flex-pack: center;
-
-    .filter::after{
+    .filter::after {
         background-color: rgba(0, 0, 0, 0.5);
         content: "";
         display: block;
@@ -34,17 +28,18 @@
         z-index: 1;
     }
 
-    &.page-header-small{
+    &.page-header-small {
         min-height: 65vh !important;
         max-height: 700px;
     }
-    &.page-header-xs{
+
+    &.page-header-xs {
         min-height: 40vh !important;
     }
 
-    &.section-dark{
+    &.section-dark {
         .content-center,
-        .category-absolute{
+        .category-absolute {
             z-index: 1;
         }
     }
