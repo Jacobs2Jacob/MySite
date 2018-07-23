@@ -1,10 +1,41 @@
 ﻿
-<div class="wrapper page-header">
-    <div style="align-self:center;width:100%">
+<div class="wrapper page-header" style="direction:rtl">
+    <div style="align-self:center;width:80%;height:600px;background-color:white;
+                box-shadow:4px 3px 5px 2px;padding:50px">
+        <div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="שם פרטי">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="שם משפחה">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="נושא">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa"
+                                   language="en" [fullPage]="true"></ck-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="row">
-            <div class="col-3">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Default">
+            <div class="col-12">
+                <div class="form-group" style="text-align:center">
+                    <input type="submit" value="שלח"/>
                 </div>
             </div>
         </div>
