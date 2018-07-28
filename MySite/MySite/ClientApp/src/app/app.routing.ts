@@ -7,7 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LandingComponent } from './landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { SamplesComponent } from './samples/samples.component';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './contact/contact.component'; 
 
 const routes: Routes =[
     { path: 'home', component: HomeComponent },
@@ -15,7 +15,7 @@ const routes: Routes =[
     { path: 'user-profile',     component: ProfileComponent }, 
     { path: 'landing',          component: LandingComponent },
     { path: 'nucleoicons', component: NucleoiconsComponent },
-    { path: 'contact', component: ContactComponent },
+    { path: 'contact', component: ContactComponent }, 
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

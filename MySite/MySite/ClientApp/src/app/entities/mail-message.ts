@@ -4,4 +4,5 @@ export class MailMessage
 {
     Subject: string;  
     Body: string;
+    From: MailAddress;
 }

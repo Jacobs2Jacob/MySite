@@ -15,6 +15,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "progress": true,
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
@@ -28,9 +29,9 @@
               "src/assets/css/icofont.css"
             ],
             "scripts": [
-                "node_modules/jquery/dist/jquery.slim.min.js",
-                "node_modules/popper.js/dist/umd/popper.js",
-                "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/popper.js/dist/umd/popper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

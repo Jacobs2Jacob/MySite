@@ -1,32 +1,46 @@
 ﻿
 <div class="wrapper page-header" style="direction:rtl">
-    <div style="align-self:center;width:80%;height:600px;background-color:white;
+    <form [formGroup]="form" #ngForm="ngForm" (ngSubmit)="onSubmit()" novalidate
+          style="align-self:center;width:80%;height:600px;background-color:white;
                 box-shadow:4px 3px 5px 2px;padding:50px">
         <div>
             <div class="row">
                 <div class="col-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="שם פרטי">
+                        <input type="text" class="form-control" placeholder="שם פרטי" formControlName="FirstName">
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="שם משפחה">
+                        <input type="text" class="form-control" placeholder="שם משפחה" formControlName="LastName">
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label *ngIf="form?.controls?.FirstName?.errors && ngForm.submitted" style="float:right" class="text-danger">נא למלא שם פרטי</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label style="float:right" *ngIf="form?.controls?.LastName?.errors && ngForm.submitted" class="text-danger">נא למלא שם משפחה</label>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="נושא">
+                        <input type="text" class="form-control" placeholder="נושא" formControlName="Subject">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa"
-                                   language="en" [fullPage]="true"></ck-editor>
+                        <textarea class="form-control" formControlName="Body" cols="40" rows="15"></textarea>
                     </div>
                 </div>
             </div>
@@ -35,9 +49,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="form-group" style="text-align:center">
-                    <input type="submit" value="שלח"/>
+                    <input class="btn btn-danger" type="submit" value="שלח" style="font-size:18px"/>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>

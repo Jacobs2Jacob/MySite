@@ -1,30 +1,50 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactService } from './contact.service';
 import { MailMessage } from '../entities/mail-message';
 import { Subscription } from 'rxjs';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-contact',
     templateUrl: './contact.component.html',
-    styleUrls: ['./contact.component.scss']
+    styleUrls: ['./contact.component.scss'],
+    providers: [ContactService]
 })
 
-export class ContactComponent implements OnInit, OnDestroy {
+export class ContactComponent implements OnInit {
 
-    ngOnDestroy(): void {
-        throw new Error("Method not implemented.");
+    form: FormGroup;
+    
+    constructor(private contactService: ContactService,
+                private fb: FormBuilder) { }
+    
+    ngOnInit() {
+        this.createForm();
     }
-    editorValue = '';
-    private emailSub: Subscription;
 
-    constructor(private contactService: ContactService) { }
-
-    ngOnInit() { }
-
-    onSubmit(demo)
+    createForm() 
     {
-        this.emailSub = this.contactService.send(new MailMessage())
-            .subscribe();
-        
+        this.form = this.fb.group({
+            FirstName: new FormControl('', Validators.required),
+            LastName: new FormControl('', Validators.required),
+            Subject: new FormControl('', Validators.required),
+            Body: new FormControl('', Validators.required)
+        });
+    }
+
+    onSubmit()
+    { 
+         if (this.form.valid) { 
+             this.contactService.send
+             ({
+                Body: this.form.value.Body,
+                Subject: this.form.value.Subject,
+                From: { DisplayName: this.form.value.FirstName + ' ' + this.form.value.LastName, Address: 'QuickNet' }
+             })
+             .subscribe(
+                success => console.log(success ? 'Sent successfully' : 'Failed to send message'),
+                err => console.log(err)
+             );
+        }
     }
 }

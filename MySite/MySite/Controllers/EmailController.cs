@@ -3,9 +3,11 @@ using System;
 using System.Net;
 using System.Net.Mail;
 
+
 namespace MySite.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class EmailController : Controller
     {
         protected internal const string smtpAddress = "smtp.gmail.com";
@@ -15,21 +17,25 @@ namespace MySite.Controllers
         protected internal const string password = "HGECHGECHBHC";
         protected internal const string emailToAddress = "jacobs2jacob@gmail.com";    
 
-        [HttpGet("[action]")]
-        public GenericResponse Send(MailMessage message)
+        [HttpPost("[action]")]
+        public GenericResponse Send([FromBody] dynamic message)
         {
+            var newMessage = new MailMessage();
+
             try
             {
                 string senderName = message.From.DisplayName;
-                message.From = new MailAddress(emailFromAddress, senderName);
-                message.To.Add(emailToAddress);
-                message.IsBodyHtml = true;
+                newMessage.From = new MailAddress(emailFromAddress, senderName);
+                newMessage.To.Add(emailToAddress);
+                newMessage.IsBodyHtml = true;
+                newMessage.Body = message.Body;
+                newMessage.Subject = message.Subject;
 
                 using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
                 {
                     smtp.Credentials = new NetworkCredential(emailFromAddress, password);
                     smtp.EnableSsl = enableSSL;
-                    smtp.Send(message);
+                    smtp.Send(newMessage);
                 }
 
                 return GenericResponse.Success();

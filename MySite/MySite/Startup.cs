@@ -61,12 +61,8 @@ namespace MySite
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
-                {
-                    // Compiles both webpack & server automatically
-                    //spa.UseAngularCliServer(npmScript: "start");
-
-                    // Setting proxy to deliver requests to external port (compile webpack manually)
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                { 
+                    spa.UseAngularCliServer(npmScript: "start"); 
                 }
             });
         }
