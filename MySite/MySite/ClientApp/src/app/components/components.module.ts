@@ -33,6 +33,6 @@ import { NgbdModalContent } from './modal/modal.component';
         NgbdModalContent
     ],
     entryComponents: [NgbdModalContent],
-    exports:[ ComponentsComponent ]
+    exports: [ComponentsComponent, NgbdModalComponent ]
 })
 export class ComponentsModule { }

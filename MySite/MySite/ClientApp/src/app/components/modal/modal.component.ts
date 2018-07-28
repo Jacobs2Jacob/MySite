@@ -1,32 +1,36 @@
-import {Component, Input} from '@angular/core';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'; 
+import { ModalContent } from '../../entities/modal-content';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-modal-content',
     template: `
     <div class="modal-header">
-        <h5 class="modal-title text-center">Modal title</h5>
-        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title text-center">{{content?.Title}}</h5>
     </div>
-    <div class="modal-body"> Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+    <div class="modal-body"> 
+        {{content?.Body}}
     </div>
     <div class="modal-footer">
-        <div class="left-side">
-            <button type="button" class="btn btn-default btn-link" (click)="activeModal.close('Close click')">Never mind</button>
-        </div>
-        <div class="divider"></div>
-        <div class="right-side">
-            <button type="button" class="btn btn-danger btn-link" (click)="activeModal.close('Close click')">DELETE</button>
+        <div *ngIf="content?.CloseButton">
+            <button type="button" class="btn btn-default btn-link" (click)="close()">{{content?.ButtonText}}</button>
         </div>
     </div>
     `
 })
 export class NgbdModalContent {
-    @Input() name;
+    @Input() content: ModalContent;
+    @Input() btnNavigationUrl: string;
+    @Output() onClose: EventEmitter<any> = new EventEmitter();
 
-    constructor(public activeModal: NgbActiveModal) {}
+    close() {
+        this.activeModal.close();
+        this.onClose.subscribe(() => { this.router.navigateByUrl(this.btnNavigationUrl); })
+        this.onClose.emit();
+    }
+
+    constructor(public activeModal: NgbActiveModal, private router: Router) { }
 }
 
 @Component({
@@ -34,9 +38,22 @@ export class NgbdModalContent {
     templateUrl: './modal.component.html'
 })
 export class NgbdModalComponent {
+    @Input() component: Component;
+    @Input() modalContent: ModalContent; 
+    @Input() btnNavigationUrl: string;
+
     constructor(private modalService: NgbModal) {}
+
     open() {
-        const modalRef = this.modalService.open(NgbdModalContent);
-        modalRef.componentInstance.name = 'World';
+        let modalRef;
+        if (this.component) {
+            modalRef = this.modalService.open(this.component); 
+        }
+        else {
+            modalRef = this.modalService.open(NgbdModalContent);
+            modalRef.componentInstance.content = this.modalContent;
+            modalRef.componentInstance.btnNavigationUrl = this.btnNavigationUrl;
+        }
+        
     }
 }

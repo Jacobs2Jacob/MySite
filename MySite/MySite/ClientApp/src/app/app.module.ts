@@ -17,6 +17,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import { HttpClientModule } from '@angular/common/http'; 
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HomeModule,
     SamplesModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    ComponentsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
